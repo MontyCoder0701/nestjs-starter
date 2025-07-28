@@ -5,13 +5,21 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
+function getEnvFilePath(): string {
+  switch (process.env.NODE_ENV) {
+    case 'production':
+      return '.env.production';
+    case 'test':
+      return '.env.test';
+    default:
+      return '.env.development';
+  }
+}
+
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath:
-        process.env.NODE_ENV === 'production'
-          ? '.env.production'
-          : '.env.development',
+      envFilePath: getEnvFilePath(),
     }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
