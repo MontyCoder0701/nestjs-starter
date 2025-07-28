@@ -15,7 +15,7 @@ Use it for hackathons or external projects as a boilerplate — clone and custom
 ### Database
 
 - **MySQL**
-- **TypeORM**
+- [**TypeORM**](https://typeorm.io)
 
 ## Notice
 
